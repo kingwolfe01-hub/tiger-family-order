@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiger Family 護脊書包 - 專屬訂購</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            background-color: #f0f2f5; 
+            padding: 20px; 
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 450px; 
+        }
+        .card { 
+            background: white; 
+            border-radius: 12px; 
+            padding: 24px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+            margin-bottom: 20px;
+        }
+        .card img { 
+            width: 100%; 
+            border-radius: 8px; 
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 1px solid #eee;
+        }
+        .card h2 { 
+            margin: 0 0 5px; 
+            color: #333; 
+            font-size: 22px;
+            text-align: center;
+        }
+        .promo-tag {
+            text-align: center;
+            color: #d93025;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #0056b3;
+            font-size: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        .subtitle:hover { color: #003d82; }
+        
+        /* 新增：保固標籤的專屬樣式 */
+        .warranty-tag {
+            text-align: center;
+            color: #27ae60;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background-color: #eafaf1;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #bce8f1;
+        }
+        
+        .form-group {
+            display: flex;
+            gap: 10px;
+        }
+        .form-group > div {
+            flex: 1;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #444;
+            font-size: 14px;
+        }
+        select, input[type="number"] { 
+            width: 100%; 
+            padding: 12px; 
+            margin-top: 8px; 
+            border-radius: 8px; 
+            border: 1px solid #ccc; 
+            font-size: 16px; 
+            background-color: #fafafa;
+            box-sizing: border-box;
+        }
+        .price-display { 
+            text-align: center;
+            margin: 20px 0; 
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+        .discount-price {
+            color: #e60012; 
+            font-weight: bold; 
+            font-size: 24px; 
+        }
+        
+        /* 按鈕樣式 */
+        .btn-add { 
+            width: 100%;
+            background-color: #f39c12; 
+            color: white; 
+            border: none; 
+            padding: 14px;
+            border-radius: 8px;
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        .btn-add:hover { background-color: #d68910; }
+        
+        .btn-line { 
+            width: 100%;
+            background-color: #00B900; 
+            color: white; 
+            border: none; 
+            padding: 16px;
+            border-radius: 8px;
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        .btn-line:hover { background-color: #009900; }
+        .btn-line:disabled { background-color: #cccccc; cursor: not-allowed; }
+
+        /* 購物車區塊樣式 */
+        .cart-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .cart-section h3 { margin-top: 0; color: #333; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #eee;
+            padding: 10px 0;
+            font-size: 15px;
+        }
+        .cart-item-info { flex: 1; line-height: 1.4;}
+        .cart-item-title { font-weight: bold; color: #333; }
+        .cart-item-details { color: #666; font-size: 13px; }
+        .btn-delete {
+            background: #ff4d4d; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; margin-left: 10px;
+        }
+        .cart-total {
+            text-align: right; font-size: 20px; font-weight: bold; color: #e60012; margin-top: 15px;
+        }
+        .empty-cart { text-align: center; color: #888; padding: 20px 0; }
+
+        /* Modal 樣式 */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.7); justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background-color: #fff; padding: 20px; border-radius: 12px; width: 90%; max-width: 350px; position: relative; text-align: center;
+        }
+        .modal-content img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
+        .close-btn { position: absolute; top: 10px; right: 15px; color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h2 id="store-title">Tiger Family 護脊書包</h2>
+            <div class="promo-tag">🎉 專屬回饋：全面 75 折感謝價</div>
+            <div class="subtitle" onclick="openModal()">🎁 購買指定款即贈：豪華聯名款雙件組 (點擊看圖)</div>
+            
+            <div class="warranty-tag">🛡️ 正版授權 ‧ 原廠保固一年</div>
+            
+            <img id="product-img" src="images/ice_warrior.jpg" alt="書包圖片">
+            
+            <label for="style-select">1. 選擇款式：</label>
+            <select id="style-select" onchange="updateProduct()"></select>
+
+            <label for="size-select">2. 選擇尺寸 (依年級)：</label>
+            <select id="size-select" onchange="updatePrice()"></select>
+
+            <label for="qty-input">3. 購買數量：</label>
+            <input type="number" id="qty-input" value="1" min="1" max="10">
+
+            <div class="price-display" id="price-display"></div>
+
+            <button class="btn-add" onclick="addToCart()">＋ 加入購物車</button>
+        </div>
+
+        <div class="cart-section">
+            <h3>🛒 購物車清單</h3>
+            <div id="cart-items-container">
+                <div class="empty-cart">目前購物車沒有商品喔！</div>
+            </div>
+            <div class="cart-total" id="cart-total-display" style="display: none;">總計：NT$ 0</div>
+            
+            <button id="checkout-btn" class="btn-line" onclick="sendToLine()" disabled>傳送訂單至 Line</button>
+        </div>
+    </div>
+
+    <div id="giftModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3>🎁 豪華聯名雙件組</h3>
+            <img src="images/gift.jpg" alt="贈品：手提補習袋+卡片零錢包">
+            <p>包含：三麗鷗手提補習袋 + 卡片零錢包<br>(男款/女款供選擇，價值回饋滿點！)</p>
+        </div>
+    </div>
+
+    <script>
+        // --- 購物車資料陣列 ---
+        let cart = [];
+
+        // --- 商品資料庫 (原價) ---
+        const products = {
+            "冰鋒武士": { img: "ice_warrior.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
+            "賽車風暴": { img: "racing_storm.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
+            "機甲守護者": { img: "mecha_guardian.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
+            "電光暴龍": { img: "lightning_trex.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
+            "月亮小貓": { img: "moon_cat.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
+            "櫻桃泡泡": { img: "cherry_bubble.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
+            "雲朵小貓": { img: "cloud_cat.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
+            "紫漾星河": { img: "purple_galaxy.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
+            "甜蜜寶莉": { img: "sweet_pony.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
+            "點心美樂蒂 (三麗鷗)": { img: "my_melody.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3680}, {name: "學院風 20L (125-150cm)", price: 3780} ] },
+            "點心酷洛米 (三麗鷗)": { img: "kuromi.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3680}, {name: "學院風 20L (125-150cm)", price: 3780} ] },
+            "點心大耳狗 (三麗鷗)": { img: "cinnamoroll.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3680}, {name: "學院風 20L (125-150cm)", price: 3780}, {name: "MAX 28L (130cm以上)", price: 3480} ] }
+        };
+
+        const discountRate = 0.75; 
+
+        window.onload = function() {
+            const styleSelect = document.getElementById("style-select");
+            for (let style in products) {
+                let option = document.createElement("option");
+                option.value = style;
+                option.text = style;
+                styleSelect.appendChild(option);
+            }
+            updateProduct();
+        };
+
+        function updateProduct() {
+            const selectedStyle = document.getElementById("style-select").value;
+            const productData = products[selectedStyle];
+            document.getElementById("product-img").src = "images/" + productData.img;
+
+            const sizeSelect = document.getElementById("size-select");
+            sizeSelect.innerHTML = ""; 
+            productData.sizes.forEach(sizeInfo => {
+                let option = document.createElement("option");
+                option.value = sizeInfo.name;
+                option.text = sizeInfo.name;
+                option.dataset.originalPrice = sizeInfo.price; 
+                sizeSelect.appendChild(option);
+            });
+            // 每次換款式，數量重置為 1
+            document.getElementById("qty-input").value = 1;
+            updatePrice();
+        }
+
+        function updatePrice() {
+            const sizeSelect = document.getElementById("size-select");
+            const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+            
+            const originalPrice = parseInt(selectedOption.dataset.originalPrice);
+            const discountPrice = Math.round(originalPrice * discountRate);
+            const qty = parseInt(document.getElementById("qty-input").value) || 1;
+
+            const formatOriginal = originalPrice.toLocaleString();
+            const formatDiscount = discountPrice.toLocaleString();
+
+            document.getElementById("price-display").innerHTML = `
+                <span class="original-price">原價 $${formatOriginal}</span><br>
+                <span class="discount-price">感謝價 NT$ ${formatDiscount} / 件</span>
+            `;
+            
+            // 暫存此單件折扣價，給加入購物車時使用
+            document.getElementById("price-display").dataset.unitPrice = discountPrice;
+        }
+
+        // 監聽數量變化，確保不輸入負數
+        document.getElementById("qty-input").addEventListener('input', function() {
+            if(this.value < 1) this.value = 1;
+        });
+
+        // --- 將商品加入購物車 ---
+        function addToCart() {
+            const style = document.getElementById("style-select").value;
+            const size = document.getElementById("size-select").value;
+            const qty = parseInt(document.getElementById("qty-input").value);
+            const unitPrice = parseInt(document.getElementById("price-display").dataset.unitPrice);
+            const subtotal = unitPrice * qty;
+
+            // 把物件推入陣列
+            cart.push({
+                style: style,
+                size: size,
+                qty: qty,
+                unitPrice: unitPrice,
+                subtotal: subtotal
+            });
+
+            renderCart(); // 重新繪製購物車畫面
+            
+            // 跳出提示
+            alert(`已將 ${qty} 件 ${style} 加入購物車！`);
+        }
+
+        // --- 從購物車移除商品 ---
+        function removeFromCart(index) {
+            cart.splice(index, 1); 
+            renderCart();
+        }
+
+        // --- 繪製/更新購物車畫面 ---
+        function renderCart() {
+            const container = document.getElementById("cart-items-container");
+            const totalDisplay = document.getElementById("cart-total-display");
+            const checkoutBtn = document.getElementById("checkout-btn");
+
+            container.innerHTML = ""; // 清空現有畫面
+            let grandTotal = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="empty-cart">目前購物車沒有商品喔！</div>';
+                totalDisplay.style.display = "none";
+                checkoutBtn.disabled = true;
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                grandTotal += item.subtotal;
+                
+                const itemDiv = document.createElement("div");
+                itemDiv.className = "cart-item";
+                itemDiv.innerHTML = `
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.style}</div>
+                        <div class="cart-item-details">${item.size} <br> 數量：${item.qty} | 小計：$${item.subtotal.toLocaleString()}</div>
+                    </div>
+                    <button class="btn-delete" onclick="removeFromCart(${index})">刪除</button>
+                `;
+                container.appendChild(itemDiv);
+            });
+
+            totalDisplay.innerHTML = `總計：NT$ ${grandTotal.toLocaleString()}`;
+            totalDisplay.style.display = "block";
+            checkoutBtn.disabled = false; // 開放結帳按鈕
+        }
+
+        // --- 組裝購物車所有內容並傳送 Line ---
+        function sendToLine() {
+            let message = `Louis 您好，我想確認以下書包訂購資訊：\n\n`;
+            let grandTotal = 0;
+
+            cart.forEach((item, index) => {
+                grandTotal += item.subtotal;
+                message += `${index + 1}. 【${item.style}】\n`;
+                message += `   規格：${item.size}\n`;
+                message += `   數量：${item.qty}\n`;
+                message += `   小計：NT$ ${item.subtotal.toLocaleString()}\n\n`;
+            });
+
+            message += `------------------\n`;
+            message += `【訂單總金額】NT$ ${grandTotal.toLocaleString()}\n`;
+            message += `*(皆享正版原廠保固一年及活動贈品)*\n\n`;
+            message += `再麻煩您協助處理，謝謝！`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.location.href = `https://line.me/R/msg/text/?${encodedMessage}`;
+        }
+
+        function openModal() { document.getElementById("giftModal").style.display = "flex"; }
+        function closeModal() { document.getElementById("giftModal").style.display = "none"; }
+        window.onclick = function(event) {
+            const modal = document.getElementById("giftModal");
+            if (event.target === modal) modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
