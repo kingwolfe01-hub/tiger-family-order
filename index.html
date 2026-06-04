@@ -3,43 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiger Family 護脊書包 - 專屬訂購</title>
+    <title>Tiger Family 護脊書包 - 專屬訂購表單</title>
+
     <style>
-        body { 
-            font-family: sans-serif; 
-            background-color: #f0f2f5; 
-            padding: 20px; 
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            margin: 0;
+            color: #333;
         }
 
         .container {
             width: 100%;
-            max-width: 480px; 
+            max-width: 520px;
         }
 
-        .card, .cart-section { 
-            background: white; 
-            border-radius: 12px; 
-            padding: 24px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+        .card,
+        .cart-section {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
             margin-bottom: 20px;
         }
 
-        .card img { 
-            width: 100%; 
-            border-radius: 8px; 
-            margin-bottom: 20px;
-            object-fit: cover;
-            border: 1px solid #eee;
-        }
-
-        .card h2 { 
-            margin: 0 0 5px; 
-            color: #333; 
-            font-size: 22px;
+        h1 {
+            font-size: 24px;
             text-align: center;
+            margin: 0 0 8px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 19px;
+            margin: 0 0 15px;
+            border-left: 5px solid #f39c12;
+            padding-left: 10px;
+            color: #333;
         }
 
         .promo-tag {
@@ -47,21 +54,21 @@
             color: #d93025;
             font-size: 15px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .subtitle {
             text-align: center;
             color: #0056b3;
             font-size: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             cursor: pointer;
             text-decoration: underline;
             font-weight: bold;
         }
 
-        .subtitle:hover { 
-            color: #003d82; 
+        .subtitle:hover {
+            color: #003d82;
         }
 
         .warranty-tag {
@@ -69,162 +76,223 @@
             color: #27ae60;
             font-size: 14px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             background-color: #eafaf1;
-            padding: 8px;
-            border-radius: 6px;
-            border: 1px solid #bce8f1;
+            padding: 9px;
+            border-radius: 8px;
+            border: 1px solid #bce8c8;
         }
 
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin: 5px 0 15px;
-            border-left: 4px solid #f39c12;
-            padding-left: 10px;
+        .product-img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #eee;
+            object-fit: cover;
+            background: #fafafa;
         }
 
         label {
             display: block;
-            margin-top: 15px;
+            margin-top: 14px;
             font-weight: bold;
-            color: #444;
             font-size: 14px;
+            color: #444;
         }
 
         select,
-        input[type="number"],
-        input[type="text"],
-        input[type="tel"],
-        textarea { 
-            width: 100%; 
-            padding: 12px; 
-            margin-top: 8px; 
-            border-radius: 8px; 
-            border: 1px solid #ccc; 
-            font-size: 16px; 
+        input,
+        textarea {
+            width: 100%;
+            margin-top: 7px;
+            padding: 12px;
+            border-radius: 9px;
+            border: 1px solid #ccc;
+            font-size: 16px;
             background-color: #fafafa;
-            box-sizing: border-box;
+            font-family: inherit;
         }
 
         textarea {
             resize: vertical;
-            min-height: 90px;
+            min-height: 88px;
         }
 
-        .price-display { 
+        .hint {
+            font-size: 12px;
+            color: #777;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        .price-display {
             text-align: center;
-            margin: 20px 0; 
+            margin: 20px 0;
+            background: #fff8f0;
+            border: 1px solid #ffd9ae;
+            border-radius: 10px;
+            padding: 12px;
         }
 
         .original-price {
             text-decoration: line-through;
             color: #888;
             font-size: 14px;
-            margin-right: 8px;
         }
 
         .discount-price {
-            color: #e60012; 
-            font-weight: bold; 
-            font-size: 24px; 
+            color: #e60012;
+            font-weight: bold;
+            font-size: 25px;
+            display: inline-block;
+            margin-top: 4px;
         }
 
-        .btn-add { 
+        .btn {
             width: 100%;
-            background-color: #f39c12; 
-            color: white; 
-            border: none; 
+            border: none;
+            border-radius: 9px;
             padding: 14px;
-            border-radius: 8px;
-            cursor: pointer; 
-            font-weight: bold; 
-            font-size: 18px;
-            transition: background 0.3s;
-            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 17px;
+            transition: 0.25s;
+            font-family: inherit;
         }
 
-        .btn-add:hover { 
-            background-color: #d68910; 
+        .btn-add {
+            background-color: #f39c12;
+            color: white;
         }
 
-        .btn-line { 
-            width: 100%;
-            background-color: #00B900; 
-            color: white; 
-            border: none; 
-            padding: 16px;
-            border-radius: 8px;
-            cursor: pointer; 
-            font-weight: bold; 
-            font-size: 18px;
+        .btn-add:hover {
+            background-color: #d68910;
+        }
+
+        .btn-line {
+            background-color: #00B900;
+            color: white;
             margin-top: 15px;
+            padding: 16px;
+            font-size: 18px;
         }
 
-        .btn-line:hover { 
-            background-color: #009900; 
+        .btn-line:hover {
+            background-color: #009900;
         }
 
-        .btn-line:disabled { 
-            background-color: #cccccc; 
-            cursor: not-allowed; 
+        .btn-line:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
         }
 
-        .cart-section h3 { 
-            margin-top: 0; 
-            color: #333; 
-            border-bottom: 2px solid #eee; 
-            padding-bottom: 10px; 
+        .btn-clear {
+            background-color: #777;
+            color: white;
+            margin-top: 10px;
+            font-size: 15px;
+            padding: 12px;
+        }
+
+        .btn-clear:hover {
+            background-color: #555;
+        }
+
+        /* 數量控制：修正手機 LINE 內建瀏覽器輸入 Bug */
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 7px;
+        }
+
+        .qty-control input {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            height: 50px;
+            flex: 1;
+            background-color: #fff;
+            cursor: default;
+            margin-top: 0;
+            -webkit-text-fill-color: #333;
+            opacity: 1;
+        }
+
+        .qty-btn {
+            width: 54px;
+            height: 50px;
+            border: none;
+            border-radius: 9px;
+            background-color: #f39c12;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .qty-btn:hover {
+            background-color: #d68910;
+        }
+
+        .qty-btn:active {
+            transform: scale(0.96);
         }
 
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px dashed #eee;
-            padding: 10px 0;
-            font-size: 15px;
             gap: 10px;
+            border-bottom: 1px dashed #ddd;
+            padding: 12px 0;
         }
 
-        .cart-item-info { 
-            flex: 1; 
-            line-height: 1.5;
+        .cart-item-info {
+            flex: 1;
+            line-height: 1.55;
         }
 
-        .cart-item-title { 
-            font-weight: bold; 
-            color: #333; 
+        .cart-item-title {
+            font-weight: bold;
+            color: #222;
+            font-size: 15px;
         }
 
-        .cart-item-details { 
-            color: #666; 
-            font-size: 13px; 
+        .cart-item-details {
+            color: #666;
+            font-size: 13px;
+            margin-top: 3px;
         }
 
         .btn-delete {
-            background: #ff4d4d; 
-            color: white; 
-            border: none; 
-            padding: 6px 12px; 
-            border-radius: 6px; 
-            cursor: pointer; 
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 7px 11px;
+            border-radius: 7px;
+            cursor: pointer;
             font-size: 13px;
             white-space: nowrap;
         }
 
-        .empty-cart { 
-            text-align: center; 
-            color: #888; 
-            padding: 20px 0; 
+        .btn-delete:hover {
+            background: #e60000;
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: #888;
+            padding: 24px 0;
+            font-size: 14px;
         }
 
         .summary-box {
             margin-top: 15px;
             background: #fafafa;
             border: 1px solid #eee;
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 14px;
         }
 
@@ -232,404 +300,803 @@
             display: flex;
             justify-content: space-between;
             margin: 8px 0;
-            color: #333;
             font-size: 15px;
         }
 
         .summary-row.total {
-            font-size: 20px;
+            font-size: 21px;
             font-weight: bold;
             color: #e60012;
             border-top: 1px solid #ddd;
-            padding-top: 10px;
-            margin-top: 10px;
+            padding-top: 12px;
+            margin-top: 12px;
         }
 
         .shipping-note {
-            margin-top: 10px;
+            margin-top: 12px;
             font-size: 13px;
-            color: #666;
+            color: #555;
             background: #fff8e6;
             border: 1px solid #f6d58b;
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 9px;
+            line-height: 1.5;
+        }
+
+        .free-shipping {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .required {
+            color: #e60012;
         }
 
         .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1000; 
-            left: 0; 
-            top: 0; 
-            width: 100%; 
-            height: 100%; 
-            background-color: rgba(0,0,0,0.7); 
-            justify-content: center; 
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.72);
+            justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
         .modal-content {
-            background-color: #fff; 
-            padding: 20px; 
-            border-radius: 12px; 
-            width: 90%; 
-            max-width: 350px; 
-            position: relative; 
+            background: white;
+            width: 100%;
+            max-width: 380px;
+            border-radius: 14px;
+            padding: 20px;
             text-align: center;
+            position: relative;
         }
 
-        .modal-content img { 
-            width: 100%; 
-            border-radius: 8px; 
-            margin-bottom: 10px; 
+        .modal-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
         }
 
-        .close-btn { 
-            position: absolute; 
-            top: 10px; 
-            right: 15px; 
-            color: #aaa; 
-            font-size: 28px; 
-            font-weight: bold; 
-            cursor: pointer; 
+        .close-btn {
+            position: absolute;
+            right: 14px;
+            top: 8px;
+            color: #aaa;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .footer-text {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 420px) {
+            body {
+                padding: 12px;
+            }
+
+            .card,
+            .cart-section {
+                padding: 18px;
+            }
+
+            h1 {
+                font-size: 21px;
+            }
+
+            .discount-price {
+                font-size: 22px;
+            }
+
+            .qty-btn {
+                width: 50px;
+                height: 48px;
+            }
+
+            .qty-control input {
+                height: 48px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <!-- 商品選購 -->
-        <div class="card">
-            <h2 id="store-title">Tiger Family 護脊書包</h2>
-            <div class="promo-tag">🎉 專屬回饋：全面 75 折感謝價</div>
-            <div class="subtitle" onclick="openModal()">🎁 購買指定款即贈：豪華聯名款雙件組 (點擊看圖)</div>
-            <div class="warranty-tag">🛡️ 正版授權 ‧ 原廠保固一年</div>
+    <!-- 商品區 -->
+    <div class="card">
+        <h1>Tiger Family 護脊書包</h1>
 
-            <img id="product-img" src="images/ice_warrior.jpg" alt="書包圖片">
+        <div class="promo-tag">🎉 專屬回饋：全面 75 折感謝價</div>
 
-            <label for="style-select">1. 選擇款式：</label>
-            <select id="style-select" onchange="updateProduct()"></select>
-
-            <label for="size-select">2. 選擇尺寸 (依年級)：</label>
-            <select id="size-select" onchange="updatePrice()"></select>
-
-            <label for="qty-input">3. 購買數量：</label>
-            <input type="number" id="qty-input" value="1" min="1" max="10">
-
-            <div class="price-display" id="price-display"></div>
-
-            <button class="btn-add" onclick="addToCart()">＋ 加入購物車</button>
+        <div class="subtitle" onclick="openModal()">
+            🎁 購買指定款即贈：豪華聯名款雙件組（點擊看圖）
         </div>
 
-        <!-- 收件資訊 -->
-        <div class="card">
-            <div class="section-title">📦 收件資訊</div>
-
-            <label for="buyer-name">收件人姓名：</label>
-            <input type="text" id="buyer-name" placeholder="請輸入收件人姓名">
-
-            <label for="buyer-phone">聯絡電話：</label>
-            <input type="tel" id="buyer-phone" placeholder="請輸入聯絡電話">
-
-            <label for="buyer-address">收件地址：</label>
-            <textarea id="buyer-address" placeholder="請輸入完整收件地址"></textarea>
+        <div class="warranty-tag">
+            🛡️ 正版授權 ‧ 原廠保固一年
         </div>
 
-        <!-- 購物車 -->
-        <div class="cart-section">
-            <h3>🛒 購物車清單</h3>
-            <div id="cart-items-container">
-                <div class="empty-cart">目前購物車沒有商品喔！</div>
-            </div>
+        <img id="product-img" class="product-img" src="images/ice_warrior.jpg" alt="Tiger Family 書包圖片">
 
-            <div id="cart-summary" class="summary-box" style="display:none;">
-                <div class="summary-row">
-                    <span>商品件數</span>
-                    <span id="total-qty-display">0 件</span>
-                </div>
-                <div class="summary-row">
-                    <span>商品小計</span>
-                    <span id="subtotal-display">NT$ 0</span>
-                </div>
-                <div class="summary-row">
-                    <span>運費</span>
-                    <span id="shipping-display">NT$ 0</span>
-                </div>
-                <div class="summary-row total">
-                    <span>應付總額</span>
-                    <span id="grand-total-display">NT$ 0</span>
-                </div>
-                <div class="shipping-note">
-                    🚚 運費規則：同一住址 1～3 件運費 NT$150，4 件以上免運費
-                </div>
-            </div>
+        <h2>商品選購</h2>
 
-            <button id="checkout-btn" class="btn-line" onclick="sendToLine()" disabled>
-                傳送訂單至 Line
-            </button>
+        <label for="style-select">1. 選擇款式 <span class="required">*</span></label>
+        <select id="style-select" onchange="updateProduct()"></select>
+
+        <label for="size-select">2. 選擇尺寸 <span class="required">*</span></label>
+        <select id="size-select" onchange="updatePrice()"></select>
+
+        <label for="qty-input">3. 購買數量 <span class="required">*</span></label>
+
+        <div class="qty-control">
+            <button type="button" class="qty-btn" onclick="decreaseQty()">－</button>
+            <input
+                type="text"
+                id="qty-input"
+                value="1"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                readonly
+                aria-label="購買數量"
+            >
+            <button type="button" class="qty-btn" onclick="increaseQty()">＋</button>
+        </div>
+
+        <div class="hint">請使用「＋ / －」調整數量，單次加入購物車最多 10 件。</div>
+
+        <div class="price-display" id="price-display"></div>
+
+        <button class="btn btn-add" onclick="addToCart()">＋ 加入購物車</button>
+    </div>
+
+    <!-- 收件資訊 -->
+    <div class="card">
+        <h2>收件資訊</h2>
+
+        <label for="buyer-name">收件人姓名 <span class="required">*</span></label>
+        <input type="text" id="buyer-name" placeholder="請輸入收件人姓名">
+
+        <label for="buyer-phone">聯絡電話 <span class="required">*</span></label>
+        <input type="tel" id="buyer-phone" placeholder="例如：0912345678">
+
+        <label for="buyer-address">收件地址 <span class="required">*</span></label>
+        <textarea id="buyer-address" placeholder="請輸入完整收件地址，例如：縣市、鄉鎮區、路名、巷弄、門牌、樓層"></textarea>
+
+        <label for="buyer-note">備註</label>
+        <textarea id="buyer-note" placeholder="可填寫希望到貨時間、特殊需求，沒有可留空"></textarea>
+
+        <div class="hint">
+            ※ 本表單會將訂購內容整理後開啟 Line 傳送，實際訂單仍以雙方 Line 確認內容為準。
         </div>
     </div>
 
-    <!-- 贈品 Modal -->
-    <div id="giftModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3>🎁 豪華聯名雙件組</h3>
-            <img src="images/gift.jpg" alt="贈品：手提補習袋+卡片零錢包">
-            <p>包含：三麗鷗手提補習袋 + 卡片零錢包<br>(男款/女款供選擇，價值回饋滿點！)</p>
+    <!-- 購物車 -->
+    <div class="cart-section">
+        <h2>購物車清單</h2>
+
+        <div id="cart-items-container">
+            <div class="empty-cart">目前購物車沒有商品喔！</div>
         </div>
+
+        <div id="cart-summary" class="summary-box" style="display:none;">
+            <div class="summary-row">
+                <span>商品總件數</span>
+                <span id="total-qty-display">0 件</span>
+            </div>
+
+            <div class="summary-row">
+                <span>商品小計</span>
+                <span id="subtotal-display">NT$ 0</span>
+            </div>
+
+            <div class="summary-row">
+                <span>運費</span>
+                <span id="shipping-display">NT$ 0</span>
+            </div>
+
+            <div class="summary-row total">
+                <span>應付總額</span>
+                <span id="grand-total-display">NT$ 0</span>
+            </div>
+
+            <div class="shipping-note">
+                🚚 運費規則：同一收件地址 1～3 件運費 NT$150，4 件以上免運費。
+            </div>
+        </div>
+
+        <button id="checkout-btn" class="btn btn-line" onclick="sendToLine()" disabled>
+            傳送訂單至 Line
+        </button>
+
+        <button class="btn btn-clear" onclick="clearOrder()">
+            清空購物車與表單
+        </button>
     </div>
 
-    <script>
-        // --- 購物車資料 ---
-        let cart = [];
+    <div class="footer-text">
+        Tiger Family 護脊書包專屬訂購表單<br>
+        價格、贈品與庫存狀況以實際確認為準
+    </div>
+</div>
 
-        // --- 商品資料庫（原價） ---
-        const products = {
-            "冰鋒武士": { img: "ice_warrior.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
-            "賽車風暴": { img: "racing_storm.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
-            "機甲守護者": { img: "mecha_guardian.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
-            "電光暴龍": { img: "lightning_trex.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
-            "月亮小貓": { img: "moon_cat.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
-            "櫻桃泡泡": { img: "cherry_bubble.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
-            "雲朵小貓": { img: "cloud_cat.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
-            "紫漾星河": { img: "purple_galaxy.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
-            "甜蜜寶莉": { img: "sweet_pony.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3580}, {name: "學院風 20L (125-150cm)", price: 3680} ] },
-            "點心美樂蒂 (三麗鷗)": { img: "my_melody.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3680}, {name: "學院風 20L (125-150cm)", price: 3780} ] },
-            "點心酷洛米 (三麗鷗)": { img: "kuromi.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3680}, {name: "學院風 20L (125-150cm)", price: 3780} ] },
-            "點心大耳狗 (三麗鷗)": { img: "cinnamoroll.jpg", sizes: [ {name: "小學者 14L (110-130cm)", price: 3680}, {name: "學院風 20L (125-150cm)", price: 3780}, {name: "MAX 28L (130cm以上)", price: 3480} ] }
-        };
+<!-- 贈品 Modal -->
+<div id="giftModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3>🎁 豪華聯名雙件組</h3>
+        <img src="images/gift.jpg" alt="贈品圖片">
+        <p>
+            包含：三麗鷗手提補習袋 + 卡片零錢包<br>
+            男款 / 女款供選擇
+        </p>
+    </div>
+</div>
 
-        const discountRate = 0.75;
+<script>
+    // =========================
+    // 基本資料設定
+    // =========================
 
-        window.onload = function() {
-            const styleSelect = document.getElementById("style-select");
+    let cart = [];
 
-            for (let style in products) {
-                const option = document.createElement("option");
-                option.value = style;
-                option.text = style;
-                styleSelect.appendChild(option);
-            }
+    const discountRate = 0.75;
+    const shippingFee = 150;
+    const freeShippingQty = 4;
+    const maxQtyPerAdd = 10;
 
-            updateProduct();
-        };
-
-        function updateProduct() {
-            const selectedStyle = document.getElementById("style-select").value;
-            const productData = products[selectedStyle];
-
-            document.getElementById("product-img").src = "images/" + productData.img;
-
-            const sizeSelect = document.getElementById("size-select");
-            sizeSelect.innerHTML = "";
-
-            productData.sizes.forEach(sizeInfo => {
-                const option = document.createElement("option");
-                option.value = sizeInfo.name;
-                option.text = sizeInfo.name;
-                option.dataset.originalPrice = sizeInfo.price;
-                sizeSelect.appendChild(option);
-            });
-
-            document.getElementById("qty-input").value = 1;
-            updatePrice();
+    const products = {
+        "冰鋒武士": {
+            img: "ice_warrior.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3580 },
+                { name: "學院風 20L (125-150cm)", price: 3680 }
+            ]
+        },
+        "賽車風暴": {
+            img: "racing_storm.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3580 },
+                { name: "學院風 20L (125-150cm)", price: 3680 }
+            ]
+        },
+        "機甲守護者": {
+            img: "mecha_guardian.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3580 },
+                { name: "學院風 20L (125-150cm)", price: 3680 }
+            ]
+        },
+        "電光暴龍": {
+            img: "lightning_trex.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3580 },
+                { name: "學院風 20L (125-150cm)", price: 3680 }
+            ]
+        },
+        "月亮小貓": {
+            img: "moon_cat.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3580 },
+                { name: "學院風 20L (125-150cm)", price: 3680 }
+            ]
+        },
+        "櫻桃泡泡": {
+            img: "cherry_bubble.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3580 },
+                { name: "學院風 20L (125-150cm)", price: 3680 }
+            ]
+        },
+        "雲朵小貓": {
+            img: "cloud_cat.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3580 },
+                { name: "學院風 20L (125-150cm)", price: 3680 }
+            ]
+        },
+        "紫漾星河": {
+            img: "purple_galaxy.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3580 },
+                { name: "學院風 20L (125-150cm)", price: 3680 }
+            ]
+        },
+        "甜蜜寶莉": {
+            img: "sweet_pony.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3580 },
+                { name: "學院風 20L (125-150cm)", price: 3680 }
+            ]
+        },
+        "點心美樂蒂 (三麗鷗)": {
+            img: "my_melody.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3680 },
+                { name: "學院風 20L (125-150cm)", price: 3780 }
+            ]
+        },
+        "點心酷洛米 (三麗鷗)": {
+            img: "kuromi.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3680 },
+                { name: "學院風 20L (125-150cm)", price: 3780 }
+            ]
+        },
+        "點心大耳狗 (三麗鷗)": {
+            img: "cinnamoroll.jpg",
+            sizes: [
+                { name: "小學者 14L (110-130cm)", price: 3680 },
+                { name: "學院風 20L (125-150cm)", price: 3780 },
+                { name: "MAX 28L (130cm以上)", price: 3480 }
+            ]
         }
+    };
 
-        function updatePrice() {
-            const sizeSelect = document.getElementById("size-select");
-            const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+    // =========================
+    // 頁面初始化
+    // =========================
 
-            if (!selectedOption) return;
+    window.onload = function () {
+        initProductSelect();
+        loadSavedData();
+        updateProduct();
+        renderCart();
+        bindFormAutoSave();
+    };
 
-            const originalPrice = parseInt(selectedOption.dataset.originalPrice);
-            const discountPrice = Math.round(originalPrice * discountRate);
+    function initProductSelect() {
+        const styleSelect = document.getElementById("style-select");
+        styleSelect.innerHTML = "";
 
-            const formatOriginal = originalPrice.toLocaleString();
-            const formatDiscount = discountPrice.toLocaleString();
-
-            document.getElementById("price-display").innerHTML = `
-                <span class="original-price">原價 NT$ ${formatOriginal}</span><br>
-                <span class="discount-price">感謝價 NT$ ${formatDiscount} / 件</span>
-            `;
-
-            document.getElementById("price-display").dataset.unitPrice = discountPrice;
+        for (let style in products) {
+            const option = document.createElement("option");
+            option.value = style;
+            option.textContent = style;
+            styleSelect.appendChild(option);
         }
+    }
 
-        // 數量欄位限制
-        document.getElementById("qty-input").addEventListener("input", function() {
-            let value = parseInt(this.value) || 1;
-            if (value < 1) value = 1;
-            if (value > 10) value = 10;
-            this.value = value;
-            updatePrice();
+    // =========================
+    // 商品選擇與價格
+    // =========================
+
+    function updateProduct() {
+        const selectedStyle = document.getElementById("style-select").value;
+        const productData = products[selectedStyle];
+
+        if (!productData) return;
+
+        document.getElementById("product-img").src = "images/" + productData.img;
+
+        const sizeSelect = document.getElementById("size-select");
+        sizeSelect.innerHTML = "";
+
+        productData.sizes.forEach(sizeInfo => {
+            const option = document.createElement("option");
+            option.value = sizeInfo.name;
+            option.textContent = sizeInfo.name;
+            option.dataset.originalPrice = sizeInfo.price;
+            sizeSelect.appendChild(option);
         });
 
-        function addToCart() {
-            const style = document.getElementById("style-select").value;
-            const size = document.getElementById("size-select").value;
-            const qty = parseInt(document.getElementById("qty-input").value) || 1;
-            const unitPrice = parseInt(document.getElementById("price-display").dataset.unitPrice);
-            const subtotal = unitPrice * qty;
+        setQty(1);
+        updatePrice();
+    }
 
+    function updatePrice() {
+        const sizeSelect = document.getElementById("size-select");
+        const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+
+        if (!selectedOption) return;
+
+        const originalPrice = Number(selectedOption.dataset.originalPrice);
+        const discountPrice = Math.round(originalPrice * discountRate);
+
+        const priceDisplay = document.getElementById("price-display");
+        priceDisplay.dataset.unitPrice = discountPrice;
+        priceDisplay.dataset.originalPrice = originalPrice;
+
+        priceDisplay.innerHTML = `
+            <span class="original-price">原價 NT$ ${formatMoney(originalPrice)}</span><br>
+            <span class="discount-price">感謝價 NT$ ${formatMoney(discountPrice)} / 件</span>
+        `;
+    }
+
+    // =========================
+    // 數量控制：手機 LINE Bug 修正版
+    // =========================
+
+    function getCurrentQty() {
+        let qty = parseInt(document.getElementById("qty-input").value, 10);
+
+        if (isNaN(qty) || qty < 1) {
+            qty = 1;
+        }
+
+        if (qty > maxQtyPerAdd) {
+            qty = maxQtyPerAdd;
+        }
+
+        return qty;
+    }
+
+    function setQty(qty) {
+        qty = parseInt(qty, 10);
+
+        if (isNaN(qty) || qty < 1) {
+            qty = 1;
+        }
+
+        if (qty > maxQtyPerAdd) {
+            qty = maxQtyPerAdd;
+        }
+
+        document.getElementById("qty-input").value = qty;
+    }
+
+    function increaseQty() {
+        const currentQty = getCurrentQty();
+
+        if (currentQty >= maxQtyPerAdd) {
+            alert(`單次加入購物車最多 ${maxQtyPerAdd} 件`);
+            setQty(maxQtyPerAdd);
+            return;
+        }
+
+        setQty(currentQty + 1);
+    }
+
+    function decreaseQty() {
+        const currentQty = getCurrentQty();
+
+        if (currentQty <= 1) {
+            setQty(1);
+            return;
+        }
+
+        setQty(currentQty - 1);
+    }
+
+    // =========================
+    // 購物車功能
+    // =========================
+
+    function addToCart() {
+        const style = document.getElementById("style-select").value;
+        const size = document.getElementById("size-select").value;
+        const qty = getCurrentQty();
+        const unitPrice = parseInt(document.getElementById("price-display").dataset.unitPrice, 10);
+        const originalPrice = parseInt(document.getElementById("price-display").dataset.originalPrice, 10);
+
+        if (!style || !size || !unitPrice) {
+            alert("請先選擇完整商品資訊");
+            return;
+        }
+
+        const existingItem = cart.find(item => item.style === style && item.size === size);
+
+        if (existingItem) {
+            existingItem.qty += qty;
+            existingItem.subtotal = existingItem.qty * existingItem.unitPrice;
+        } else {
             cart.push({
-                style: style,
-                size: size,
-                qty: qty,
-                unitPrice: unitPrice,
-                subtotal: subtotal
+                style,
+                size,
+                qty,
+                originalPrice,
+                unitPrice,
+                subtotal: qty * unitPrice
             });
-
-            renderCart();
-            alert(`已將 ${qty} 件 ${style} 加入購物車！`);
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            renderCart();
+        saveCart();
+        renderCart();
+
+        alert(`已加入購物車：${style}，數量 ${qty} 件`);
+
+        setQty(1);
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        saveCart();
+        renderCart();
+    }
+
+    function calculateTotals() {
+        let totalQty = 0;
+        let subtotal = 0;
+
+        cart.forEach(item => {
+            totalQty += item.qty;
+            subtotal += item.subtotal;
+        });
+
+        let shipping = 0;
+
+        if (totalQty > 0 && totalQty < freeShippingQty) {
+            shipping = shippingFee;
         }
 
-        function calculateTotals() {
-            let totalQty = 0;
-            let subtotal = 0;
+        const grandTotal = subtotal + shipping;
 
-            cart.forEach(item => {
-                totalQty += item.qty;
-                subtotal += item.subtotal;
-            });
-
-            let shipping = 0;
-
-            if (totalQty >= 1 && totalQty <= 3) {
-                shipping = 150;
-            } else if (totalQty >= 4) {
-                shipping = 0;
-            }
-
-            const grandTotal = subtotal + shipping;
-
-            return {
-                totalQty,
-                subtotal,
-                shipping,
-                grandTotal
-            };
-        }
-
-        function renderCart() {
-            const container = document.getElementById("cart-items-container");
-            const checkoutBtn = document.getElementById("checkout-btn");
-            const cartSummary = document.getElementById("cart-summary");
-
-            container.innerHTML = "";
-
-            if (cart.length === 0) {
-                container.innerHTML = '<div class="empty-cart">目前購物車沒有商品喔！</div>';
-                cartSummary.style.display = "none";
-                checkoutBtn.disabled = true;
-                return;
-            }
-
-            cart.forEach((item, index) => {
-                const itemDiv = document.createElement("div");
-                itemDiv.className = "cart-item";
-                itemDiv.innerHTML = `
-                    <div class="cart-item-info">
-                        <div class="cart-item-title">${item.style}</div>
-                        <div class="cart-item-details">
-                            ${item.size}<br>
-                            數量：${item.qty} ｜ 單價：NT$ ${item.unitPrice.toLocaleString()}<br>
-                            小計：NT$ ${item.subtotal.toLocaleString()}
-                        </div>
-                    </div>
-                    <button class="btn-delete" onclick="removeFromCart(${index})">刪除</button>
-                `;
-                container.appendChild(itemDiv);
-            });
-
-            const totals = calculateTotals();
-
-            document.getElementById("total-qty-display").textContent = `${totals.totalQty} 件`;
-            document.getElementById("subtotal-display").textContent = `NT$ ${totals.subtotal.toLocaleString()}`;
-            document.getElementById("shipping-display").textContent = `NT$ ${totals.shipping.toLocaleString()}`;
-            document.getElementById("grand-total-display").textContent = `NT$ ${totals.grandTotal.toLocaleString()}`;
-
-            cartSummary.style.display = "block";
-            checkoutBtn.disabled = false;
-        }
-
-        function sendToLine() {
-            if (cart.length === 0) {
-                alert("購物車目前沒有商品喔！");
-                return;
-            }
-
-            const buyerName = document.getElementById("buyer-name").value.trim();
-            const buyerPhone = document.getElementById("buyer-phone").value.trim();
-            const buyerAddress = document.getElementById("buyer-address").value.trim();
-
-            if (!buyerName) {
-                alert("請填寫收件人姓名");
-                document.getElementById("buyer-name").focus();
-                return;
-            }
-
-            if (!buyerPhone) {
-                alert("請填寫聯絡電話");
-                document.getElementById("buyer-phone").focus();
-                return;
-            }
-
-            if (!buyerAddress) {
-                alert("請填寫收件地址");
-                document.getElementById("buyer-address").focus();
-                return;
-            }
-
-            const totals = calculateTotals();
-
-            let message = `老闆 您好，我想確認以下書包訂購資訊：\n\n`;
-            message += `【收件資訊】\n`;
-            message += `姓名：${buyerName}\n`;
-            message += `電話：${buyerPhone}\n`;
-            message += `地址：${buyerAddress}\n\n`;
-
-            message += `【訂購商品】\n`;
-            cart.forEach((item, index) => {
-                message += `${index + 1}. 【${item.style}】\n`;
-                message += `   規格：${item.size}\n`;
-                message += `   數量：${item.qty}\n`;
-                message += `   單價：NT$ ${item.unitPrice.toLocaleString()}\n`;
-                message += `   小計：NT$ ${item.subtotal.toLocaleString()}\n\n`;
-            });
-
-            message += `------------------\n`;
-            message += `商品總件數：${totals.totalQty} 件\n`;
-            message += `商品小計：NT$ ${totals.subtotal.toLocaleString()}\n`;
-            message += `運費：NT$ ${totals.shipping.toLocaleString()}\n`;
-            message += `【訂單總金額】NT$ ${totals.grandTotal.toLocaleString()}\n`;
-            message += `*(同一住址 1～3 件運費 NT$150，4 件以上免運費；皆享正版原廠保固一年及活動贈品)*\n\n`;
-            message += `再麻煩您協助處理，謝謝！`;
-
-            const encodedMessage = encodeURIComponent(message);
-            window.location.href = `https://line.me/R/msg/text/?${encodedMessage}`;
-        }
-
-        function openModal() {
-            document.getElementById("giftModal").style.display = "flex";
-        }
-
-        function closeModal() {
-            document.getElementById("giftModal").style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById("giftModal");
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
+        return {
+            totalQty,
+            subtotal,
+            shipping,
+            grandTotal
         };
-    </script>
+    }
+
+    function renderCart() {
+        const container = document.getElementById("cart-items-container");
+        const cartSummary = document.getElementById("cart-summary");
+        const checkoutBtn = document.getElementById("checkout-btn");
+
+        container.innerHTML = "";
+
+        if (cart.length === 0) {
+            container.innerHTML = `<div class="empty-cart">目前購物車沒有商品喔！</div>`;
+            cartSummary.style.display = "none";
+            checkoutBtn.disabled = true;
+            return;
+        }
+
+        cart.forEach((item, index) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "cart-item";
+
+            itemDiv.innerHTML = `
+                <div class="cart-item-info">
+                    <div class="cart-item-title">${escapeHtml(item.style)}</div>
+                    <div class="cart-item-details">
+                        規格：${escapeHtml(item.size)}<br>
+                        數量：${item.qty} 件 ｜ 單價：NT$ ${formatMoney(item.unitPrice)}<br>
+                        小計：NT$ ${formatMoney(item.subtotal)}
+                    </div>
+                </div>
+                <button class="btn-delete" onclick="removeFromCart(${index})">刪除</button>
+            `;
+
+            container.appendChild(itemDiv);
+        });
+
+        const totals = calculateTotals();
+
+        document.getElementById("total-qty-display").textContent = `${totals.totalQty} 件`;
+        document.getElementById("subtotal-display").textContent = `NT$ ${formatMoney(totals.subtotal)}`;
+
+        const shippingDisplay = document.getElementById("shipping-display");
+
+        if (totals.shipping === 0 && totals.totalQty >= freeShippingQty) {
+            shippingDisplay.innerHTML = `<span class="free-shipping">免運費</span>`;
+        } else {
+            shippingDisplay.textContent = `NT$ ${formatMoney(totals.shipping)}`;
+        }
+
+        document.getElementById("grand-total-display").textContent = `NT$ ${formatMoney(totals.grandTotal)}`;
+
+        cartSummary.style.display = "block";
+        checkoutBtn.disabled = false;
+    }
+
+    // =========================
+    // Line 訂單送出
+    // =========================
+
+    function sendToLine() {
+        if (cart.length === 0) {
+            alert("購物車目前沒有商品喔！");
+            return;
+        }
+
+        const buyerName = document.getElementById("buyer-name").value.trim();
+        const buyerPhone = document.getElementById("buyer-phone").value.trim();
+        const buyerAddress = document.getElementById("buyer-address").value.trim();
+        const buyerNote = document.getElementById("buyer-note").value.trim();
+
+        if (!validateBuyerInfo(buyerName, buyerPhone, buyerAddress)) {
+            return;
+        }
+
+        const totals = calculateTotals();
+
+        let message = "";
+        message += `老闆 您好，我想確認以下 Tiger Family 護脊書包訂購資訊：\n\n`;
+
+        message += `【收件資訊】\n`;
+        message += `收件人：${buyerName}\n`;
+        message += `聯絡電話：${buyerPhone}\n`;
+        message += `收件地址：${buyerAddress}\n`;
+
+        if (buyerNote) {
+            message += `備註：${buyerNote}\n`;
+        }
+
+        message += `\n【訂購商品】\n`;
+
+        cart.forEach((item, index) => {
+            message += `${index + 1}. ${item.style}\n`;
+            message += `   規格：${item.size}\n`;
+            message += `   數量：${item.qty} 件\n`;
+            message += `   單價：NT$ ${formatMoney(item.unitPrice)}\n`;
+            message += `   小計：NT$ ${formatMoney(item.subtotal)}\n\n`;
+        });
+
+        message += `------------------------------\n`;
+        message += `商品總件數：${totals.totalQty} 件\n`;
+        message += `商品小計：NT$ ${formatMoney(totals.subtotal)}\n`;
+
+        if (totals.shipping === 0 && totals.totalQty >= freeShippingQty) {
+            message += `運費：免運費\n`;
+        } else {
+            message += `運費：NT$ ${formatMoney(totals.shipping)}\n`;
+        }
+
+        message += `【訂單總金額】NT$ ${formatMoney(totals.grandTotal)}\n\n`;
+        message += `運費規則：同一收件地址 1～3 件運費 NT$150，4 件以上免運費。\n`;
+        message += `活動說明：皆享正版原廠保固一年及活動贈品。\n\n`;
+        message += `再麻煩您協助確認，謝謝！`;
+
+        saveBuyerInfo();
+
+        const encodedMessage = encodeURIComponent(message);
+        window.location.href = `https://line.me/R/msg/text/?${encodedMessage}`;
+    }
+
+    function validateBuyerInfo(name, phone, address) {
+        if (!name) {
+            alert("請填寫收件人姓名");
+            document.getElementById("buyer-name").focus();
+            return false;
+        }
+
+        if (!phone) {
+            alert("請填寫聯絡電話");
+            document.getElementById("buyer-phone").focus();
+            return false;
+        }
+
+        const phoneNumbersOnly = phone.replace(/\D/g, "");
+
+        if (phoneNumbersOnly.length < 8) {
+            alert("請確認聯絡電話是否正確，電話至少需要 8 碼數字");
+            document.getElementById("buyer-phone").focus();
+            return false;
+        }
+
+        if (!address) {
+            alert("請填寫完整收件地址");
+            document.getElementById("buyer-address").focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    // =========================
+    // 資料保存 localStorage
+    // =========================
+
+    function saveCart() {
+        localStorage.setItem("tigerFamilyCart", JSON.stringify(cart));
+    }
+
+    function saveBuyerInfo() {
+        const buyerInfo = {
+            name: document.getElementById("buyer-name").value.trim(),
+            phone: document.getElementById("buyer-phone").value.trim(),
+            address: document.getElementById("buyer-address").value.trim(),
+            note: document.getElementById("buyer-note").value.trim()
+        };
+
+        localStorage.setItem("tigerFamilyBuyerInfo", JSON.stringify(buyerInfo));
+    }
+
+    function loadSavedData() {
+        const savedCart = localStorage.getItem("tigerFamilyCart");
+        const savedBuyerInfo = localStorage.getItem("tigerFamilyBuyerInfo");
+
+        if (savedCart) {
+            try {
+                cart = JSON.parse(savedCart) || [];
+            } catch (e) {
+                cart = [];
+            }
+        }
+
+        if (savedBuyerInfo) {
+            try {
+                const info = JSON.parse(savedBuyerInfo);
+
+                document.getElementById("buyer-name").value = info.name || "";
+                document.getElementById("buyer-phone").value = info.phone || "";
+                document.getElementById("buyer-address").value = info.address || "";
+                document.getElementById("buyer-note").value = info.note || "";
+            } catch (e) {
+                console.log("收件資訊讀取失敗");
+            }
+        }
+    }
+
+    function bindFormAutoSave() {
+        const fields = ["buyer-name", "buyer-phone", "buyer-address", "buyer-note"];
+
+        fields.forEach(id => {
+            document.getElementById(id).addEventListener("input", saveBuyerInfo);
+        });
+    }
+
+    function clearOrder() {
+        const confirmed = confirm("確定要清空購物車與表單資料嗎？");
+
+        if (!confirmed) return;
+
+        cart = [];
+
+        localStorage.removeItem("tigerFamilyCart");
+        localStorage.removeItem("tigerFamilyBuyerInfo");
+
+        document.getElementById("buyer-name").value = "";
+        document.getElementById("buyer-phone").value = "";
+        document.getElementById("buyer-address").value = "";
+        document.getElementById("buyer-note").value = "";
+
+        setQty(1);
+        renderCart();
+
+        alert("已清空購物車與表單資料");
+    }
+
+    // =========================
+    // Modal
+    // =========================
+
+    function openModal() {
+        document.getElementById("giftModal").style.display = "flex";
+    }
+
+    function closeModal() {
+        document.getElementById("giftModal").style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        const modal = document.getElementById("giftModal");
+
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
+
+    // =========================
+    // 工具函式
+    // =========================
+
+    function formatMoney(number) {
+        return Number(number).toLocaleString("zh-TW");
+    }
+
+    function escapeHtml(text) {
+        return String(text)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+</script>
+
 </body>
 </html>
