@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiger Family 護脊書包 - 專屬訂購表單</title>
+  <style>
+    *{box-sizing:border-box}
+    body{
+      font-family:"Microsoft JhengHei",Arial,sans-serif;
+      background:#f0f2f5;
+      margin:0;
+      padding:20px;
+      display:flex;
+      justify-content:center;
+      color:#333;
+    }
+    .container{width:100%;max-width:520px}
+    .card,.cart-section{
+      background:#fff;
+      border-radius:14px;
+      padding:22px;
+      box-shadow:0 4px 14px rgba(0,0,0,.08);
+      margin-bottom:20px;
+    }
+    h1{
+      font-size:24px;
+      text-align:center;
+      margin:0 0 8px;
+      color:#222;
+    }
+    h2{
+      font-size:19px;
+      margin:0 0 15px;
+      border-left:5px solid #f39c12;
+      padding-left:10px;
+      color:#333;
+    }
+    .promo-tag{
+      text-align:center;
+      color:#d93025;
+      font-size:15px;
+      font-weight:bold;
+      margin-bottom:8px;
+    }
+    .subtitle{
+      text-align:center;
+      color:#0056b3;
+      font-size:15px;
+      margin-bottom:12px;
+      cursor:pointer;
+      text-decoration:underline;
+      font-weight:bold;
+    }
+    .subtitle:hover{color:#003d82}
+    .warranty-tag{
+      text-align:center;
+      color:#27ae60;
+      font-size:14px;
+      font-weight:bold;
+      margin-bottom:18px;
+      background:#eafaf1;
+      padding:9px;
+      border-radius:8px;
+      border:1px solid #bce8c8;
+    }
+    .product-img{
+      width:100%;
+      border-radius:10px;
+      margin-bottom:18px;
+      border:1px solid #eee;
+      object-fit:cover;
+      background:#fafafa;
+    }
+    .video-section{margin:18px 0 22px}
+    .video-intro{
+      color:#666;
+      font-size:13px;
+      line-height:1.6;
+      margin:-6px 0 12px;
+      background:#fff8f0;
+      border:1px solid #ffd9ae;
+      border-radius:9px;
+      padding:10px;
+    }
+    .video-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+    .video-card{
+      background:#fafafa;
+      border:1px solid #eee;
+      border-radius:12px;
+      padding:12px;
+    }
+    .video-card video{
+      width:100%;
+      border-radius:10px;
+      background:#000;
+      display:block;
+    }
+    .video-title{
+      font-weight:bold;
+      color:#222;
+      font-size:15px;
+      margin-top:10px;
+    }
+    .video-desc{
+      color:#666;
+      font-size:13px;
+      margin-top:4px;
+      line-height:1.5;
+    }
+    label{
+      display:block;
+      margin-top:14px;
+      font-weight:bold;
+      font-size:14px;
+      color:#444;
+    }
+    select,input,textarea{
+      width:100%;
+      margin-top:7px;
+      padding:12px;
+      border-radius:9px;
+      border:1px solid #ccc;
+      font-size:16px;
+      background:#fafafa;
+      font-family:inherit;
+    }
+    textarea{
+      resize:vertical;
+      min-height:88px;
+    }
+    .hint{
+      font-size:12px;
+      color:#777;
+      margin-top:6px;
+      line-height:1.5;
+    }
+    .price-display{
+      text-align:center;
+      margin:20px 0;
+      background:#fff8f0;
+      border:1px solid #ffd9ae;
+      border-radius:10px;
+      padding:12px;
+    }
+    .original-price{
+      text-decoration:line-through;
+      color:#888;
+      font-size:14px;
+    }
+    .discount-price{
+      color:#e60012;
+      font-weight:bold;
+      font-size:25px;
+      display:inline-block;
+      margin-top:4px;
+    }
+    .btn{
+      width:100%;
+      border:0;
+      border-radius:9px;
+      padding:14px;
+      cursor:pointer;
+      font-weight:bold;
+      font-size:17px;
+      transition:.25s;
+      font-family:inherit;
+    }
+    .btn-add{
+      background:#f39c12;
+      color:#fff;
+    }
+    .btn-add:hover{background:#d68910}
+    .btn-line{
+      background:#00B900;
+      color:#fff;
+      margin-top:15px;
+      padding:16px;
+      font-size:18px;
+    }
+    .btn-line:hover{background:#090}
+    .btn-line:disabled{
+      background:#ccc;
+      cursor:not-allowed;
+    }
+    .btn-clear{
+      background:#777;
+      color:#fff;
+      margin-top:10px;
+      font-size:15px;
+      padding:12px;
+    }
+    .btn-clear:hover{background:#555}
+    .qty-control{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-top:7px;
+    }
+    .qty-control input{
+      text-align:center;
+      font-size:20px;
+      font-weight:bold;
+      height:50px;
+      flex:1;
+      background:#fff;
+      cursor:default;
+      margin-top:0;
+      -webkit-text-fill-color:#333;
+      opacity:1;
+    }
+    .qty-btn{
+      width:54px;
+      height:50px;
+      border:0;
+      border-radius:9px;
+      background:#f39c12;
+      color:#fff;
+      font-size:24px;
+      font-weight:bold;
+      cursor:pointer;
+      line-height:1;
+    }
+    .qty-btn:hover{background:#d68910}
+    .qty-btn:active{transform:scale(.96)}
+    .payment-info{
+      margin-top:12px;
+      background:#f7fbff;
+      border:1px solid #cfe6ff;
+      color:#333;
+      border-radius:9px;
+      padding:12px;
+      font-size:14px;
+      line-height:1.7;
+    }
+    .bank-box{
+      background:#fff8e6;
+      border:1px solid #f6d58b;
+      border-radius:9px;
+      padding:12px;
+      margin-top:10px;
+      line-height:1.8;
+    }
+    .cart-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      border-bottom:1px dashed #ddd;
+      padding:12px 0;
+    }
+    .cart-item-info{
+      flex:1;
+      line-height:1.55;
+    }
+    .cart-item-title{
+      font-weight:bold;
+      color:#222;
+      font-size:15px;
+    }
+    .cart-item-details{
+      color:#666;
+      font-size:13px;
+      margin-top:3px;
+    }
+    .btn-delete{
+      background:#ff4d4d;
+      color:#fff;
+      border:0;
+      padding:7px 11px;
+      border-radius:7px;
+      cursor:pointer;
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .btn-delete:hover{background:#e60000}
+    .empty-cart{
+      text-align:center;
+      color:#888;
+      padding:24px 0;
+      font-size:14px;
+    }
+    .summary-box{
+      margin-top:15px;
+      background:#fafafa;
+      border:1px solid #eee;
+      border-radius:12px;
+      padding:14px;
+    }
+    .summary-row{
+      display:flex;
+      justify-content:space-between;
+      margin:8px 0;
+      font-size:15px;
+    }
+    .summary-row.total{
+      font-size:21px;
+      font-weight:bold;
+      color:#e60012;
+      border-top:1px solid #ddd;
+      padding-top:12px;
+      margin-top:12px;
+    }
+    .shipping-note{
+      margin-top:12px;
+      font-size:13px;
+      color:#555;
+      background:#fff8e6;
+      border:1px solid #f6d58b;
+      padding:10px;
+      border-radius:9px;
+      line-height:1.5;
+    }
+    .free-shipping{
+      color:#27ae60;
+      font-weight:bold;
+    }
+    .required{color:#e60012}
+    .modal{
+      display:none;
+      position:fixed;
+      z-index:1000;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,.72);
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+    .modal-content{
+      background:#fff;
+      width:100%;
+      max-width:380px;
+      border-radius:14px;
+      padding:20px;
+      text-align:center;
+      position:relative;
+    }
+    .modal-content img{
+      width:100%;
+      border-radius:10px;
+      margin-bottom:10px;
+    }
+    .close-btn{
+      position:absolute;
+      right:14px;
+      top:8px;
+      color:#aaa;
+      font-size:30px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+    .footer-text{
+      text-align:center;
+      color:#888;
+      font-size:12px;
+      line-height:1.6;
+      margin-top:10px;
+    }
+    .noscript-warning{
+      max-width:520px;
+      margin:0 auto 12px;
+      background:#fff3cd;
+      border:1px solid #ffeeba;
+      color:#856404;
+      border-radius:10px;
+      padding:12px;
+      font-family:"Microsoft JhengHei",Arial,sans-serif;
+    }
+    @media(max-width:420px){
+      body{padding:12px}
+      .card,.cart-section{padding:18px}
+      h1{font-size:21px}
+      .discount-price{font-size:22px}
+      .qty-btn{width:50px;height:48px}
+      .qty-control input{height:48px}
+      .video-grid{gap:8px}
+      .video-card{padding:8px}
+      .video-title{font-size:13px}
+      .video-desc{font-size:11px}
+    }
+  </style>
+</head>
+<body>
+<noscript>
+  <div class="noscript-warning">此訂購表單需要啟用 JavaScript 才能使用購物車與送出功能。</div>
+</noscript>
+
+<div class="container">
+  <div class="card">
+    <h1>Tiger Family 護脊書包</h1>
+    <div class="promo-tag">🎉 專屬回饋：全面 75 折感謝價</div>
+    <div class="subtitle" onclick="openModal()">🎁 購買指定款即贈：豪華聯名款雙件組（點擊看圖）</div>
+    <div class="warranty-tag">🛡️ 正版授權 ‧ 原廠保固一年</div>
+
+    <section class="video-section">
+      <h2>商品實拍短片</h2>
+      <div class="video-intro">先看男生版與女生版款式實拍，再挑選最適合孩子的書包。</div>
+      <div class="video-grid">
+        <div class="video-card">
+          <video controls preload="metadata" poster="images/video-boys-cover.jpg">
+            <source src="videos/boys-style-demo.mp4" type="video/mp4">
+            您的瀏覽器不支援影片播放。
+          </video>
+          <div class="video-title">1. 男生版款式實拍</div>
+          <div class="video-desc">冰鋒武士、賽車風暴、機甲守護者等熱門款。</div>
+        </div>
+
+        <div class="video-card">
+          <video controls preload="metadata" poster="images/video-girls-cover.jpg">
+            <source src="videos/girls-style-demo.mp4" type="video/mp4">
+            您的瀏覽器不支援影片播放。
+          </video>
+          <div class="video-title">2. 女生版款式實拍</div>
+          <div class="video-desc">月亮小貓、櫻桃泡泡、三麗鷗系列等熱門款。</div>
+        </div>
+      </div>
+    </section>
+
+    <img id="product-img" src="images/ice_warrior.jpg" class="product-img" alt="商品展示圖">
+
+    <h2>商品選購</h2>
+
+    <label for="style-select">1. 選擇款式 <span class="required">*</span></label>
+    <select id="style-select" onchange="updateProduct()"></select>
+
+    <label for="size-select">2. 選擇尺寸 <span class="required">*</span></label>
+    <select id="size-select" onchange="updatePrice()"></select>
+
+    <label for="qty-input">3. 購買數量 <span class="required">*</span></label>
+    <div class="qty-control">
+      <button type="button" class="qty-btn" onclick="decreaseQty()">－</button>
+      <input type="text" id="qty-input" value="1" inputmode="numeric" pattern="[0-9]*" readonly aria-label="購買數量">
+      <button type="button" class="qty-btn" onclick="increaseQty()">＋</button>
+    </div>
+    <div class="hint">請使用「＋ / －」調整數量，單次加入購物車最多 10 件。</div>
+
+    <div class="price-display" id="price-display"></div>
+
+    <button class="btn btn-add" onclick="addToCart()">＋ 加入購物車</button>
+  </div>
+
+  <div class="card">
+    <h2>收件資訊</h2>
+
+    <label for="buyer-name">收件人姓名 <span class="required">*</span></label>
+    <input type="text" id="buyer-name" placeholder="請輸入收件人姓名">
+
+    <label for="buyer-phone">聯絡電話 <span class="required">*</span></label>
+    <input type="tel" id="buyer-phone" placeholder="例如：0912345678">
+
+    <label for="buyer-address">收件地址 <span class="required">*</span></label>
+    <textarea id="buyer-address" placeholder="請輸入完整收件地址，例如：縣市、鄉鎮區、路名、巷弄、門牌、樓層"></textarea>
+
+    <label for="buyer-note">備註</label>
+    <textarea id="buyer-note" placeholder="可填寫希望到貨時間、特殊需求，沒有可留空"></textarea>
+
+    <div class="hint">
+      ※ 本表單會將訂購內容整理後開啟 Line 傳送，實際訂單仍以雙方 Line 確認內容為準。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>電子發票資訊</h2>
+
+    <label for="invoice-type">發票類型 <span class="required">*</span></label>
+    <select id="invoice-type" onchange="toggleInvoiceFields(); saveBuyerInfo();">
+      <option value="個人電子發票">個人電子發票</option>
+      <option value="手機條碼載具">手機條碼載具</option>
+      <option value="公司戶發票">公司戶發票</option>
+    </select>
+
+    <div id="invoice-carrier-box" style="display:none;">
+      <label for="invoice-carrier">手機條碼載具 <span class="required">*</span></label>
+      <input type="text" id="invoice-carrier" placeholder="例如：/ABC1234" maxlength="8" autocomplete="off">
+      <div class="hint">請輸入財政部手機條碼，通常為 / 開頭共 8 碼。</div>
+    </div>
+
+    <div id="invoice-company-box" style="display:none;">
+      <label for="invoice-taxid">統一編號 <span class="required">*</span></label>
+      <input type="text" id="invoice-taxid" placeholder="例如：12345678" maxlength="8" inputmode="numeric" autocomplete="off">
+
+      <label for="invoice-title">公司抬頭 <span class="required">*</span></label>
+      <input type="text" id="invoice-title" placeholder="請輸入公司名稱">
+    </div>
+
+    <label for="invoice-note">發票備註</label>
+    <textarea id="invoice-note" placeholder="若有特殊發票需求可填寫，沒有可留空"></textarea>
+
+    <div class="hint">※ 已取消捐贈碼欄位。本區資料會同步送到 Line 與 Google Sheet，方便你後續用訂單序號開立電子發票。</div>
+  </div>
+
+  <div class="card">
+    <h2>付款方式</h2>
+
+    <label for="payment-method">請選擇付款方式 <span class="required">*</span></label>
+    <select id="payment-method" onchange="togglePaymentInfo(); saveBuyerInfo();">
+      <option value="網路銀行轉帳">網路銀行轉帳</option>
+    </select>
+
+    <div id="bank-transfer-info" class="payment-info">
+      <strong>網路銀行轉帳資訊：</strong>
+      <div class="bank-box">
+        銀行名稱：玉山銀行<br>
+        銀行代號：808<br>
+        帳號：0439-968-040153<br>
+        戶名：林呈謙
+      </div>
+      匯款完成後，請回傳以下資料方便核對：<br>
+      1. 匯款帳號末五碼<br>
+      2. 匯款金額<br>
+      3. 匯款時間
+    </div>
+  </div>
+
+  <div class="cart-section">
+    <h2>購物車清單</h2>
+
+    <div id="cart-items-container">
+      <div class="empty-cart">目前購物車沒有商品喔！</div>
+    </div>
+
+    <div id="cart-summary" class="summary-box" style="display:none;">
+      <div class="summary-row">
+        <span>商品總件數</span>
+        <span id="total-qty-display">0 件</span>
+      </div>
+      <div class="summary-row">
+        <span>商品小計</span>
+        <span id="subtotal-display">NT$ 0</span>
+      </div>
+      <div class="summary-row">
+        <span>運費</span>
+        <span id="shipping-display">NT$ 0</span>
+      </div>
+      <div class="summary-row total">
+        <span>應付總額</span>
+        <span id="grand-total-display">NT$ 0</span>
+      </div>
+      <div class="shipping-note">🚚 運費規則：同一收件地址 1～3 件運費 NT$150，4 件以上免運費。</div>
+    </div>
+
+    <button id="checkout-btn" class="btn btn-line" onclick="sendToLine()" disabled>傳送訂單至 Line</button>
+    <button class="btn btn-clear" onclick="clearOrder()">清空購物車與表單</button>
+  </div>
+
+  <div class="footer-text">
+    Tiger Family 護脊書包專屬訂購表單<br>
+    價格、贈品與庫存狀況以實際確認為準
+  </div>
+</div>
+
+<div id="giftModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h3>🎁 豪華聯名雙件組</h3>
+    <img src="images/gift.jpg" alt="贈品圖片">
+    <p>包含：三麗鷗手提補習袋 + 卡片零錢包<br>男款 / 女款供選擇</p>
+  </div>
+</div>
+
+<script>
+let cart=[];
+let isSubmitting=false;
+
+const discountRate=.75;
+const shippingFee=150;
+const freeShippingQty=4;
+const maxQtyPerAdd=10;
+
+const GOOGLE_SCRIPT_URL="https://script.google.com/macros/s/AKfycbym8l4akJF78FK02jqoyCwUg4zYU03UVxVTzdsgiCALLVqYg1WSBqGSXKRU7mHOiXE/exec";
+
+const bankName="玉山銀行";
+const bankCode="808";
+const bankAccount="0439-968-040153";
+const bankAccountName="林呈謙";
+
+const products={
+  "冰鋒武士":{
+    img:"ice_warrior.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3580},
+      {name:"學院風 20L (125-150cm)",price:3680}
+    ]
+  },
+  "賽車風暴":{
+    img:"racing_storm.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3580},
+      {name:"學院風 20L (125-150cm)",price:3680}
+    ]
+  },
+  "機甲守護者":{
+    img:"mecha_guardian.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3580},
+      {name:"學院風 20L (125-150cm)",price:3680}
+    ]
+  },
+  "電光暴龍":{
+    img:"lightning_trex.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3580},
+      {name:"學院風 20L (125-150cm)",price:3680}
+    ]
+  },
+  "月亮小貓":{
+    img:"moon_cat.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3580},
+      {name:"學院風 20L (125-150cm)",price:3680}
+    ]
+  },
+  "櫻桃泡泡":{
+    img:"cherry_bubble.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3580},
+      {name:"學院風 20L (125-150cm)",price:3680}
+    ]
+  },
+  "雲朵小貓":{
+    img:"cloud_cat.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3580},
+      {name:"學院風 20L (125-150cm)",price:3680}
+    ]
+  },
+  "紫漾星河":{
+    img:"purple_galaxy.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3580},
+      {name:"學院風 20L (125-150cm)",price:3680}
+    ]
+  },
+  "甜蜜寶莉":{
+    img:"sweet_pony.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3580},
+      {name:"學院風 20L (125-150cm)",price:3680}
+    ]
+  },
+  "點心美樂蒂 (三麗鷗)":{
+    img:"my_melody.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3680},
+      {name:"學院風 20L (125-150cm)",price:3780}
+    ]
+  },
+  "點心酷洛米 (三麗鷗)":{
+    img:"kuromi.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3680},
+      {name:"學院風 20L (125-150cm)",price:3780}
+    ]
+  },
+  "點心大耳狗 (三麗鷗)":{
+    img:"cinnamoroll.jpg",
+    sizes:[
+      {name:"小學者 14L (110-130cm)",price:3680},
+      {name:"學院風 20L (125-150cm)",price:3780},
+      {name:"MAX 28L (130cm以上)",price:3480}
+    ]
+  }
+};
+
+window.onload=function(){
+  initProductSelect();
+  loadSavedData();
+  updateProduct();
+  renderCart();
+  bindFormAutoSave();
+  togglePaymentInfo();
+  toggleInvoiceFields();
+};
+
+function initProductSelect(){
+  const s=document.getElementById("style-select");
+  s.innerHTML="";
+
+  for(let style in products){
+    const o=document.createElement("option");
+    o.value=style;
+    o.textContent=style;
+    s.appendChild(o);
+  }
+}
+
+function updateProduct(){
+  const style=document.getElementById("style-select").value;
+  const p=products[style];
+
+  if(!p)return;
+
+  document.getElementById("product-img").src="images/"+p.img;
+
+  const size=document.getElementById("size-select");
+  size.innerHTML="";
+
+  p.sizes.forEach(x=>{
+    const o=document.createElement("option");
+    o.value=x.name;
+    o.textContent=x.name;
+    o.dataset.originalPrice=x.price;
+    size.appendChild(o);
+  });
+
+  // 確保下拉選單重置後有預設選中第一項
+  size.selectedIndex = 0; 
+  setQty(1);
+  updatePrice();
+}
+
+function updatePrice(){
+  const s=document.getElementById("size-select");
+  const o=s.options[s.selectedIndex];
+
+  if(!o)return;
+
+  const original=Number(o.dataset.originalPrice);
+  const discount=Math.round(original*discountRate);
+
+  const p=document.getElementById("price-display");
+  p.dataset.unitPrice=discount;
+  p.dataset.originalPrice=original;
+  p.innerHTML=`<span class="original-price">原價 NT$ ${formatMoney(original)}</span><br><span class="discount-price">感謝價 NT$ ${formatMoney(discount)} / 件</span>`;
+}
+
+function getCurrentQty(){
+  let q=parseInt(document.getElementById("qty-input").value,10);
+
+  if(isNaN(q)||q<1)q=1;
+  if(q>maxQtyPerAdd)q=maxQtyPerAdd;
+
+  return q;
+}
+
+function setQty(q){
+  q=parseInt(q,10);
+
+  if(isNaN(q)||q<1)q=1;
+  if(q>maxQtyPerAdd)q=maxQtyPerAdd;
+
+  document.getElementById("qty-input").value=q;
+}
+
+function increaseQty(){
+  const q=getCurrentQty();
+
+  if(q>=maxQtyPerAdd){
+    alert(`單次加入購物車最多 ${maxQtyPerAdd} 件`);
+    setQty(maxQtyPerAdd);
+    return;
+  }
+
+  setQty(q+1);
+}
+
+function decreaseQty(){
+  const q=getCurrentQty();
+  setQty(q<=1?1:q-1);
+}
+
+function togglePaymentInfo(){
+  const bankInfo=document.getElementById("bank-transfer-info");
+  if(bankInfo)bankInfo.style.display="block";
+}
+
+function toggleInvoiceFields(){
+  const t=document.getElementById("invoice-type").value;
+
+  document.getElementById("invoice-carrier-box").style.display=t==="手機條碼載具"?"block":"none";
+  document.getElementById("invoice-company-box").style.display=t==="公司戶發票"?"block":"none";
+}
+
+function addToCart(){
+  const style=document.getElementById("style-select").value;
+  const size=document.getElementById("size-select").value;
+  const qty=getCurrentQty();
+  const unitPrice=parseInt(document.getElementById("price-display").dataset.unitPrice,10);
+  const originalPrice=parseInt(document.getElementById("price-display").dataset.originalPrice,10);
+
+  if(!style||!size||!unitPrice){
+    alert("請先選擇完整商品資訊");
+    return;
+  }
+
+  const ex=cart.find(i=>i.style===style&&i.size===size);
+
+  if(ex){
+    ex.qty+=qty;
+    ex.subtotal=ex.qty*ex.unitPrice;
+  }else{
+    cart.push({
+      style,
+      size,
+      qty,
+      originalPrice,
+      unitPrice,
+      subtotal:qty*unitPrice
+    });
+  }
+
+  saveCart();
+  renderCart();
+  alert(`已加入購物車：${style}，數量 ${qty} 件`);
+  setQty(1);
+}
+
+function removeFromCart(i){
+  cart.splice(i,1);
+  saveCart();
+  renderCart();
+}
+
+function calculateTotals(){
+  let totalQty=0;
+  let subtotal=0;
+
+  cart.forEach(i=>{
+    const qty=Number(i.qty)||0;
+    const unitPrice=Number(i.unitPrice)||0;
+    // 修正：直接以現有數量與單價重算，不信任快取的舊 subtotal
+    const itemSubtotal = qty * unitPrice; 
+
+    totalQty+=qty;
+    subtotal+=itemSubtotal;
+
+    i.qty=qty;
+    i.unitPrice=unitPrice;
+    i.subtotal=itemSubtotal;
+  });
+
+  const shipping=totalQty>0&&totalQty<freeShippingQty?shippingFee:0;
+
+  return {
+    totalQty,
+    subtotal,
+    shipping,
+    grandTotal:subtotal+shipping
+  };
+}
+
+function renderCart(){
+  const c=document.getElementById("cart-items-container");
+  const sum=document.getElementById("cart-summary");
+  const btn=document.getElementById("checkout-btn");
+
+  c.innerHTML="";
+
+  if(cart.length===0){
+    c.innerHTML=`<div class="empty-cart">目前購物車沒有商品喔！</div>`;
+    sum.style.display="none";
+    btn.disabled=true;
+    return;
+  }
+
+  cart.forEach((item,i)=>{
+    const d=document.createElement("div");
+    d.className="cart-item";
+    d.innerHTML=`
+      <div class="cart-item-info">
+        <div class="cart-item-title">${escapeHtml(item.style)}</div>
+        <div class="cart-item-details">
+          規格：${escapeHtml(item.size)}<br>
+          數量：${item.qty} 件 ｜ 單價：NT$ ${formatMoney(item.unitPrice)}<br>
+          小計：NT$ ${formatMoney(item.subtotal)}
+        </div>
+      </div>
+      <button class="btn-delete" onclick="removeFromCart(${i})">刪除</button>
+    `;
+    c.appendChild(d);
+  });
+
+  const t=calculateTotals();
+
+  document.getElementById("total-qty-display").textContent=`${t.totalQty} 件`;
+  document.getElementById("subtotal-display").textContent=`NT$ ${formatMoney(t.subtotal)}`;
+  document.getElementById("shipping-display").innerHTML=t.shipping===0&&t.totalQty>=freeShippingQty
+    ?`<span class="free-shipping">免運費</span>`
+    :`NT$ ${formatMoney(t.shipping)}`;
+  document.getElementById("grand-total-display").textContent=`NT$ ${formatMoney(t.grandTotal)}`;
+
+  sum.style.display="block";
+  btn.disabled=false;
+}
+
+function generateOrderNo(){
+  const n=new Date();
+  const yyyy=n.getFullYear();
+  const mm=String(n.getMonth()+1).padStart(2,"0");
+  const dd=String(n.getDate()).padStart(2,"0");
+  const hh=String(n.getHours()).padStart(2,"0");
+  const mi=String(n.getMinutes()).padStart(2,"0");
+  const ss=String(n.getSeconds()).padStart(2,"0");
+  const r=Math.floor(1000+Math.random()*9000);
+
+  return `TF${yyyy}${mm}${dd}-${hh}${mi}${ss}-${r}`;
+}
+
+function validateInvoiceInfo(){
+  const t=document.getElementById("invoice-type").value;
+  // 修正：同步將畫面上的載具碼強制轉成大寫，提升 UX
+  const carrierInput=document.getElementById("invoice-carrier");
+  const carrier=carrierInput.value.trim().toUpperCase();
+  carrierInput.value = carrier;
+
+  const taxid=document.getElementById("invoice-taxid").value.trim();
+  const title=document.getElementById("invoice-title").value.trim();
+
+  if(t==="手機條碼載具"&&!/^\/[0-9A-Z.+-]{7}$/.test(carrier)){
+    alert("請輸入正確的手機條碼載具，例如：/ABC1234");
+    document.getElementById("invoice-carrier").focus();
+    return false;
+  }
+
+  if(t==="公司戶發票"){
+    if(!/^\d{8}$/.test(taxid)){
+      alert("請輸入正確的 8 碼統一編號");
+      document.getElementById("invoice-taxid").focus();
+      return false;
+    }
+
+    if(!title){
+      alert("請輸入公司抬頭");
+      document.getElementById("invoice-title").focus();
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function validateBuyerInfo(name,phone,address){
+  if(!name){
+    alert("請輸入收件人姓名");
+    document.getElementById("buyer-name").focus();
+    return false;
+  }
+
+  if(!phone){
+    alert("請輸入聯絡電話");
+    document.getElementById("buyer-phone").focus();
+    return false;
+  }
+
+  const normalizedPhone=phone.replace(/[\s-]/g,"");
+  const mobilePattern=/^09\d{8}$/;
+  const landlinePattern=/^0\d{8,9}$/;
+
+  if(!mobilePattern.test(normalizedPhone)&&!landlinePattern.test(normalizedPhone)){
+    alert("請輸入正確的聯絡電話，例如：0912345678、0912-345-678 或 02-23456789");
+    document.getElementById("buyer-phone").focus();
+    return false;
+  }
+
+  document.getElementById("buyer-phone").value=normalizedPhone;
+
+  if(!address){
+    alert("請輸入收件地址");
+    document.getElementById("buyer-address").focus();
+    return false;
+  }
+
+  return true;
+}
+
+function sendToLine(){
+  if(isSubmitting)return;
+
+  if(cart.length===0){
+    alert("購物車目前沒有商品喔！");
+    return;
+  }
+
+  const buyerName=document.getElementById("buyer-name").value.trim();
+  const buyerPhone=document.getElementById("buyer-phone").value.trim();
+  const buyerAddress=document.getElementById("buyer-address").value.trim();
+  const buyerNote=document.getElementById("buyer-note").value.trim();
+
+  const paymentMethod=document.getElementById("payment-method").value;
+
+  const invoiceType=document.getElementById("invoice-type").value;
+  const invoiceCarrier=document.getElementById("invoice-carrier").value.trim().toUpperCase();
+  const invoiceTaxId=document.getElementById("invoice-taxid").value.trim();
+  const invoiceTitle=document.getElementById("invoice-title").value.trim();
+  const invoiceNote=document.getElementById("invoice-note").value.trim();
+
+  if(!validateBuyerInfo(buyerName,buyerPhone,buyerAddress))return;
+  if(!validateInvoiceInfo())return;
+
+  const orderNo=generateOrderNo();
+  const totals=calculateTotals();
+  const checkoutBtn=document.getElementById("checkout-btn");
+  const cartSnapshot=cart.map(item=>({...item}));
+
+  const orderData={
+    orderNo,
+    name:buyerName,
+    phone:document.getElementById("buyer-phone").value.trim(),
+    address:buyerAddress,
+    note:buyerNote,
+    paymentMethod,
+    invoiceType,
+    invoiceCarrier,
+    invoiceTaxId,
+    invoiceTitle,
+    invoiceNote,
+    totalQty:totals.totalQty,
+    subtotal:totals.subtotal,
+    shipping:totals.shipping,
+    totalAmount:totals.grandTotal,
+    cart:cartSnapshot
+  };
+
+  isSubmitting=true;
+  checkoutBtn.innerText="訂單資料建立中...";
+  checkoutBtn.disabled=true;
+
+  const finishAndOpenLine=()=>{
+    const msg=buildLineMessage({
+      orderNo,
+      buyerName,
+      buyerPhone:orderData.phone,
+      buyerAddress,
+      buyerNote,
+      paymentMethod,
+      invoiceType,
+      invoiceCarrier,
+      invoiceTaxId,
+      invoiceTitle,
+      invoiceNote,
+      totals,
+      cartSnapshot
+    });
+
+    saveBuyerInfo();
+
+    checkoutBtn.innerText="傳送訂單至 Line";
+    checkoutBtn.disabled=false;
+    isSubmitting=false;
+
+    // 修正：使用較新的 LINE share 參數，避免跳轉失敗卡空白頁
+    window.location.href=`https://line.me/R/share?text=${encodeURIComponent(msg)}`;
+  };
+
+  fetch(GOOGLE_SCRIPT_URL,{
+    method:"POST",
+    mode:"no-cors",
+    headers:{"Content-Type":"text/plain;charset=utf-8"},
+    body:JSON.stringify(orderData)
+  })
+  .then(()=>{
+    finishAndOpenLine();
+  })
+  .catch(e=>{
+    console.error("寫入 Google Sheet 失敗:",e);
+
+    checkoutBtn.innerText="傳送訂單至 Line";
+    checkoutBtn.disabled=false;
+    isSubmitting=false;
+
+    alert("訂單備份發生異常，請確認網路狀態後再試一次。");
+  });
+}
+
+function buildLineMessage(d){
+  let m="";
+
+  m+=`老闆 您好，我想確認以下 Tiger Family 護脊書包訂購資訊：\n\n`;
+  m+=`【訂單序號】${d.orderNo}\n\n`;
+
+  m+=`【收件資訊】\n`;
+  m+=`收件人：${d.buyerName}\n`;
+  m+=`聯絡電話：${d.buyerPhone}\n`;
+  m+=`收件地址：${d.buyerAddress}\n`;
+
+  if(d.buyerNote)m+=`備註：${d.buyerNote}\n`;
+
+  m+=`\n【電子發票資訊】\n`;
+  m+=`發票類型：${d.invoiceType}\n`;
+
+  if(d.invoiceType==="手機條碼載具"){
+    m+=`手機條碼載具：${d.invoiceCarrier}\n`;
+  }
+
+  if(d.invoiceType==="公司戶發票"){
+    m+=`統一編號：${d.invoiceTaxId}\n`;
+    m+=`公司抬頭：${d.invoiceTitle}\n`;
+  }
+
+  if(d.invoiceNote)m+=`發票備註：${d.invoiceNote}\n`;
+
+  m+=`\n【訂購商品】\n`;
+
+  (d.cartSnapshot||cart).forEach((item,i)=>{
+    m+=`${i+1}. ${item.style}\n`;
+    m+=`   規格：${item.size}\n`;
+    m+=`   數量：${item.qty} 件\n`;
+    m+=`   單價：NT$ ${formatMoney(item.unitPrice)}\n`;
+    m+=`   小計：NT$ ${formatMoney(item.subtotal)}\n\n`;
+  });
+
+  m+=`------------------------------\n`;
+  m+=`商品總件數：${d.totals.totalQty} 件\n`;
+  m+=`商品小計：NT$ ${formatMoney(d.totals.subtotal)}\n`;
+
+  m+=d.totals.shipping===0&&d.totals.totalQty>=freeShippingQty
+    ?`運費：免運費\n`
+    :`運費：NT$ ${formatMoney(d.totals.shipping)}\n`;
+
+  m+=`【訂單總金額】NT$ ${formatMoney(d.totals.grandTotal)}\n\n`;
+
+  m+=`【付款方式】${d.paymentMethod}\n`;
+  m+=`請匯款至以下帳戶：\n`;
+  m+=`銀行名稱：${bankName}\n`;
+  m+=`銀行代號：${bankCode}\n`;
+  m+=`帳號：${bankAccount}\n`;
+  m+=`戶名：${bankAccountName}\n`;
+  m+=`匯款完成後，請回傳匯款帳號末五碼、匯款金額與匯款時間，方便核對。\n\n`;
+
+  m+=`運費規則：同一收件地址 1～3 件運費 NT$150，4 件以上免運費。\n`;
+  m+=`活動說明：皆享正版原廠保固一年及活動贈品。\n\n`;
+  m+=`再麻煩您協助確認，謝謝！`;
+
+  return m;
+}
+
+function saveCart(){
+  localStorage.setItem("tigerFamilyCart",JSON.stringify(cart));
+}
+
+function saveBuyerInfo(){
+  const info={
+    name:document.getElementById("buyer-name").value.trim(),
+    phone:document.getElementById("buyer-phone").value.trim(),
+    address:document.getElementById("buyer-address").value.trim(),
+    note:document.getElementById("buyer-note").value.trim(),
+    paymentMethod:document.getElementById("payment-method").value,
+    invoiceType:document.getElementById("invoice-type").value,
+    // 修正：確保在 input 改變時就強制存入大寫
+    invoiceCarrier:document.getElementById("invoice-carrier").value.trim().toUpperCase(),
+    invoiceTaxId:document.getElementById("invoice-taxid").value.trim(),
+    invoiceTitle:document.getElementById("invoice-title").value.trim(),
+    invoiceNote:document.getElementById("invoice-note").value.trim()
+  };
+
+  localStorage.setItem("tigerFamilyBuyerInfo",JSON.stringify(info));
+}
+
+function loadSavedData(){
+  const savedCart=localStorage.getItem("tigerFamilyCart");
+  const savedBuyerInfo=localStorage.getItem("tigerFamilyBuyerInfo");
+
+  if(savedCart){
+    try{
+      const p=JSON.parse(savedCart);
+      cart=Array.isArray(p)?p:[];
+    }catch(e){
+      cart=[];
+    }
+  }
+
+  if(savedBuyerInfo){
+    try{
+      const i=JSON.parse(savedBuyerInfo);
+
+      document.getElementById("buyer-name").value=i.name||"";
+      document.getElementById("buyer-phone").value=i.phone||"";
+      document.getElementById("buyer-address").value=i.address||"";
+      document.getElementById("buyer-note").value=i.note||"";
+
+      document.getElementById("payment-method").value="網路銀行轉帳";
+
+      if(i.invoiceType)document.getElementById("invoice-type").value=i.invoiceType;
+
+      document.getElementById("invoice-carrier").value=i.invoiceCarrier||"";
+      document.getElementById("invoice-taxid").value=i.invoiceTaxId||"";
+      document.getElementById("invoice-title").value=i.invoiceTitle||"";
+      document.getElementById("invoice-note").value=i.invoiceNote||"";
+    }catch(e){
+      console.log("收件資訊讀取失敗");
+    }
+  }
+}
+
+function bindFormAutoSave(){
+  [
+    "buyer-name",
+    "buyer-phone",
+    "buyer-address",
+    "buyer-note",
+    "payment-method",
+    "invoice-type",
+    "invoice-carrier",
+    "invoice-taxid",
+    "invoice-title",
+    "invoice-note"
+  ].forEach(id=>{
+    const el=document.getElementById(id);
+
+    if(!el)return;
+
+    el.addEventListener("input",saveBuyerInfo);
+    el.addEventListener("change",saveBuyerInfo);
+  });
+}
+
+function clearOrder(){
+  if(!confirm("確定要清空購物車與表單資料嗎？"))return;
+
+  cart=[];
+
+  localStorage.removeItem("tigerFamilyCart");
+  localStorage.removeItem("tigerFamilyBuyerInfo");
+
+  [
+    "buyer-name",
+    "buyer-phone",
+    "buyer-address",
+    "buyer-note",
+    "invoice-carrier",
+    "invoice-taxid",
+    "invoice-title",
+    "invoice-note"
+  ].forEach(id=>document.getElementById(id).value="");
+
+  document.getElementById("payment-method").value="網路銀行轉帳";
+  document.getElementById("invoice-type").value="個人電子發票";
+  document.getElementById("style-select").selectedIndex=0;
+
+  updateProduct();
+  setQty(1);
+  togglePaymentInfo();
+  toggleInvoiceFields();
+  renderCart();
+
+  alert("已清空購物車與表單資料");
+}
+
+function openModal(){
+  document.getElementById("giftModal").style.display="flex";
+}
+
+function closeModal(){
+  document.getElementById("giftModal").style.display="none";
+}
+
+window.onclick=function(e){
+  const m=document.getElementById("giftModal");
+
+  if(e.target===m)closeModal();
+};
+
+function formatMoney(n){
+  return Number(n).toLocaleString("zh-TW");
+}
+
+function escapeHtml(t){
+  return String(t)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+</script>
+</body>
+</html>
